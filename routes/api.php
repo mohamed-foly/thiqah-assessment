@@ -22,6 +22,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::put('/{user}', 'UserController@update');
         Route::delete('/{user}', 'UserController@delete');
     });
+
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('all', 'ProductController@all');
+        Route::get('{product}', 'ProductController@show');
+        Route::post('/', 'ProductController@store');
+        Route::put('/{product}', 'ProductController@update');
+        Route::delete('/{product}', 'ProductController@delete');
+    });
 });
 
 Route::group(['prefix' => 'auth/form', 'namespace' => 'auth'], function () {
