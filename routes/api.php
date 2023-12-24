@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'auth/form'], function () {
+    Route::post('register', 'FormController@register');
+    Route::post('login', 'FormController@login');
+});
