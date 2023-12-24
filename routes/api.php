@@ -18,7 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'auth/form'], function () {
+Route::group(['prefix' => 'auth/form', 'namespace' => 'auth'], function () {
     Route::post('register', 'FormController@register');
     Route::post('login', 'FormController@login');
 });
