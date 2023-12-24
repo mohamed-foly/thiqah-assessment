@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User;
 
+use App\Enums\UserType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -33,6 +34,7 @@ class UpdateRequest extends FormRequest
             ],
             'password' => 'required|string',
             'is_active' => 'required|boolean',
+            'type' => 'required|in:' . implode(',', UserType::values())
         ];
     }
 }

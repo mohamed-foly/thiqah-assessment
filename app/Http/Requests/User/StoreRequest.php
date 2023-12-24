@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User;
 
+use App\Enums\UserType;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -26,6 +27,7 @@ class StoreRequest extends FormRequest
             'username' => 'required|string|unique:users,username',
             'password' => 'required|string',
             'is_active' => 'required|boolean',
+            'type' => 'required|in:' . implode(',', UserType::values())
         ];
     }
 }

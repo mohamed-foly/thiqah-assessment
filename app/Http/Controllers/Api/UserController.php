@@ -38,8 +38,9 @@ class UserController extends Controller
             'username' => $request->username,
             'password' => $request->password,
             'is_active' => $request->is_active,
+            'type' => $request->type
         ]);
-        return response()->json(['data' => $user]);
+        return response()->json(['data' => UserResource::make($user)]);
     }
 
     public function update(UpdateRequest $request, $user)
@@ -49,6 +50,7 @@ class UserController extends Controller
             'username' => $request->username,
             'password' => $request->password,
             'is_active' => $request->is_active,
+            'type' => $request->type,
         ]);
         return $this->show($user);
     }
